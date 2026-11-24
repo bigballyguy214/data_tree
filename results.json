@@ -1,0 +1,98 @@
+{
+  "source": "User-supplied clinic_appointments.csv; original collection source unspecified",
+  "rows": 400,
+  "no_shows": 91,
+  "seed": 42,
+  "train_rows": 280,
+  "train_no_shows": 64,
+  "test_rows": 120,
+  "test_no_shows": 27,
+  "features": [
+    "lead_time_days",
+    "prior_no_shows",
+    "age",
+    "distance_miles",
+    "sms_reminder",
+    "new_patient",
+    "appointment_hour"
+  ],
+  "max_depth": 3,
+  "min_samples_leaf": 15,
+  "actual_depth": 3,
+  "training_accuracy": 0.8392857142857143,
+  "metrics": [
+    {
+      "model": "baseline",
+      "TN": 93,
+      "FP": 0,
+      "FN": 27,
+      "TP": 0,
+      "accuracy": 0.775,
+      "precision": 0.0,
+      "recall": 0.0,
+      "total_value": -3240,
+      "value_per_appointment": -27.0,
+      "annual_value_at_10000": -270000.0
+    },
+    {
+      "model": "v1",
+      "TN": 86,
+      "FP": 7,
+      "FN": 7,
+      "TP": 20,
+      "accuracy": 0.8833333333333333,
+      "precision": 0.7407407407407407,
+      "recall": 0.7407407407407407,
+      "total_value": -1260,
+      "value_per_appointment": -10.5,
+      "annual_value_at_10000": -105000.0
+    }
+  ],
+  "upcoming": {
+    "D": {
+      "appointment": {
+        "lead_time_days": 21,
+        "prior_no_shows": 1,
+        "age": 27,
+        "distance_miles": 9.5,
+        "sms_reminder": 0,
+        "new_patient": 1,
+        "appointment_hour": 15
+      },
+      "leaf": 4,
+      "path": [
+        "prior_no_shows <= 2.5",
+        "sms_reminder <= 0.5",
+        "prior_no_shows > 0.5"
+      ],
+      "decision": "overbook",
+      "training_leaf_shows": 23,
+      "training_leaf_no_shows": 29
+    },
+    "E": {
+      "appointment": {
+        "lead_time_days": 3,
+        "prior_no_shows": 0,
+        "age": 61,
+        "distance_miles": 2.0,
+        "sms_reminder": 1,
+        "new_patient": 0,
+        "appointment_hour": 9
+      },
+      "leaf": 6,
+      "path": [
+        "prior_no_shows <= 2.5",
+        "sms_reminder > 0.5",
+        "prior_no_shows <= 1.5"
+      ],
+      "decision": "hold",
+      "training_leaf_shows": 134,
+      "training_leaf_no_shows": 5
+    }
+  },
+  "annual_volume_assumption": 10000,
+  "savings_per_appointment": 16.5,
+  "python": "3.12.14",
+  "sklearn": "1.8.0",
+  "pandas": "2.2.3"
+}
